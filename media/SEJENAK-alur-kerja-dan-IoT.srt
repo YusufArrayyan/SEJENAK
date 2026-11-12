@@ -1,0 +1,199 @@
+1
+00:00:00,200 --> 00:00:08,432
+Ini SEJENAK, aplikasi web progresif yang membantu mahasiswa memeriksa kebiasaan media sosial mereka.
+
+2
+00:00:09,082 --> 00:00:19,738
+Dalam video ini, kita lihat alur kerja sistemnya dan bagaimana aplikasi terhubung dengan Dok Sejenak, perangkat IoT pendampingnya.
+
+3
+00:00:20,838 --> 00:00:27,678
+Penetrasi internet di Indonesia sudah mencapai 79,5 persen.
+
+4
+00:00:28,328 --> 00:00:41,984
+Sekitar 18,4 persen mahasiswa diperkirakan mengalami kecanduan media sosial, sementara hanya 2,6 persen remaja dengan masalah kesehatan mental yang mengakses layanan.
+
+5
+00:00:42,634 --> 00:00:50,290
+Alat waktu layar biasa hanya memantau. SEJENAK dirancang untuk mendampingi.
+
+6
+00:00:51,390 --> 00:00:55,302
+Sistem SEJENAK punya tiga lapisan.
+
+7
+00:00:55,952 --> 00:01:07,256
+Di depan, satu aplikasi web dipakai empat peran: mahasiswa, Teman Sejenak, konselor BK, dan admin kampus.
+
+8
+00:01:07,906 --> 00:01:15,154
+Di tengah, ada server kampus dengan login SSO dan basis data terenkripsi.
+
+9
+00:01:15,804 --> 00:01:26,148
+Di sisi perangkat, Dok Sejenak berbasis ESP32 mengirim peristiwa lewat broker MQTT yang terenkripsi TLS.
+
+10
+00:01:27,248 --> 00:01:32,624
+Alur dimulai saat mahasiswa masuk dengan akun kampus.
+
+11
+00:01:33,274 --> 00:01:41,290
+Sebelum apa pun disimpan, mahasiswa memilih apa yang dibagikan lewat tiga sakelar persetujuan.
+
+12
+00:01:41,940 --> 00:01:47,244
+Semuanya mati sejak awal dan bisa dicabut kapan saja.
+
+13
+00:01:48,344 --> 00:01:52,040
+Langkah pertama adalah Cek Pola.
+
+14
+00:01:52,690 --> 00:01:58,426
+Enam pertanyaan berbasis skala BSMAS ditampilkan satu per layar.
+
+15
+00:01:59,076 --> 00:02:08,076
+Hasilnya disampaikan dalam bahasa sehari-hari, dan selalu disertai pengingat bahwa ini bukan diagnosis.
+
+16
+00:02:09,176 --> 00:02:17,768
+Di beranda, mahasiswa melihat pola hari ini: menit per aplikasi dibandingkan batas pribadinya.
+
+17
+00:02:18,418 --> 00:02:27,706
+Aplikasi web tidak bisa membaca durasi aplikasi lain, jadi mahasiswa menyalin angka dari Waktu Layar ponsel.
+
+18
+00:02:28,356 --> 00:02:35,028
+Pencatatan ini selesai kurang dari tiga puluh detik dan tetap berjalan saat luring.
+
+19
+00:02:36,128 --> 00:02:41,264
+Saat catatan melewati batas, layar Rehat terbuka.
+
+20
+00:02:41,914 --> 00:02:48,466
+Lingkaran napas memandu tarik napas empat detik, lalu hembuskan empat detik.
+
+21
+00:02:49,116 --> 00:02:55,668
+Setelah sepuluh detik, muncul pertanyaan: untuk apa kamu membuka ini?
+
+22
+00:02:56,318 --> 00:03:03,518
+Tombol tutup dan lanjut dibuat sama besar, jadi keputusan tetap di tangan mahasiswa.
+
+23
+00:03:04,618 --> 00:03:08,170
+Di sinilah Dok Sejenak berperan.
+
+24
+00:03:08,820 --> 00:03:22,452
+Dok ini adalah alas ponsel dengan mikrokontroler ESP32, sensor inframerah untuk mendeteksi ponsel, cincin LED, dan satu tombol bantuan.
+
+25
+00:03:23,102 --> 00:03:33,710
+Dok tidak punya kamera, mikrofon, atau GPS. Yang ia tahu hanya kapan ponsel diletakkan dan diangkat.
+
+26
+00:03:34,810 --> 00:03:37,786
+Begini integrasinya.
+
+27
+00:03:38,436 --> 00:03:47,460
+Saat ponsel diletakkan, ESP32 mengirim peristiwa docked ke topik MQTT milik dok tersebut.
+
+28
+00:03:48,110 --> 00:03:55,286
+Aplikasi menerimanya lewat WebSocket aman, lalu mulai menghitung waktu bebas layar.
+
+29
+00:03:56,386 --> 00:04:01,354
+Saat ponsel diangkat, dok mengirim peristiwa lifted.
+
+30
+00:04:02,004 --> 00:04:11,196
+Aplikasi menambahkan menitnya ke catatan harian, membuka layar Rehat, lalu mengirim perintah breath kembali ke dok.
+
+31
+00:04:11,846 --> 00:04:16,982
+Cincin LED pun ikut bernapas bersama mahasiswa.
+
+32
+00:04:18,082 --> 00:04:22,546
+Jalur krisis tidak bergantung pada satu tombol.
+
+33
+00:04:23,196 --> 00:04:33,396
+Tombol Bantuan tampil di setiap layar, dan tombol fisik di dok, bila ditahan satu detik, membuka kartu bantuan di ponsel.
+
+34
+00:04:34,046 --> 00:04:44,870
+Di obrolan, kata-kata yang menandakan bahaya membuat pesan ditahan, lalu kartu Healing119 dan BK kampus langsung muncul.
+
+35
+00:04:45,520 --> 00:04:49,936
+Pesan itu tidak diteruskan ke konselor sebaya.
+
+36
+00:04:51,036 --> 00:04:54,636
+Langkah ketiga adalah Teman Sejenak.
+
+37
+00:04:55,286 --> 00:05:03,998
+Mahasiswa memilih teman dan waktu, lalu mengobrol lewat teks atau suara, paling lama tiga puluh menit.
+
+38
+00:05:04,648 --> 00:05:16,240
+Teman Sejenak adalah mahasiswa terlatih di bawah supervisi dosen BK. Ringkasan sesi hanya tersimpan bila mahasiswa menyetujuinya.
+
+39
+00:05:17,340 --> 00:05:21,588
+Langkah keempat adalah Rujuk dan Tinjau.
+
+40
+00:05:22,238 --> 00:05:31,862
+Mahasiswa membaca pratinjau rujukan, persis seperti yang akan dibaca konselor, dan boleh mengubahnya sebelum mengirim.
+
+41
+00:05:32,512 --> 00:05:41,992
+Setiap empat pekan, tinjauan menampilkan grafik skor, jumlah rehat yang ditutup, dan menit bebas layar dari dok.
+
+42
+00:05:43,092 --> 00:05:49,980
+Di sisi kampus, Teman Sejenak mengelola antrean dan bisa eskalasi ke penyelia.
+
+43
+00:05:50,630 --> 00:05:56,126
+Konselor BK menerima rujukan yang sudah disetujui mahasiswa.
+
+44
+00:05:56,776 --> 00:06:06,376
+Admin melihat dasbor agregat tanpa identitas. Kelompok dengan kurang dari sepuluh orang disembunyikan.
+
+45
+00:06:07,476 --> 00:06:11,436
+Privasi menjadi syarat sejak awal.
+
+46
+00:06:12,086 --> 00:06:22,142
+Dok hanya mengirim jenis peristiwa dan waktunya. Setiap dok punya akun MQTT sendiri yang dibatasi ke topiknya.
+
+47
+00:06:22,792 --> 00:06:32,560
+Broker tidak menyimpan pesan, dan server hanya menyimpan total menit per hari, sesuai Undang-Undang Pelindungan Data Pribadi.
+
+48
+00:06:33,660 --> 00:06:41,220
+Mengenali pola, rehat sejenak, bicara dengan teman, lalu dirujuk bila perlu.
+
+49
+00:06:41,870 --> 00:06:51,110
+Aplikasi dan Dok Sejenak bekerja bersama, supaya mahasiswa bisa berhenti sebentar dan memilih langkahnya sendiri.
+
+50
+00:06:51,760 --> 00:06:54,040
+Terima kasih.

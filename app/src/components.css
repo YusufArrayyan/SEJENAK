@@ -198,3 +198,7 @@ code { font-size: 0.9em; padding: 1px 6px; border-radius: 6px; background: var(-
 .chat-log .help-card .help-title { font-size: 1.0625rem; }
 .table td .label { white-space: nowrap; }
 @media (min-width: 960px) { .login-quote { max-width: 16ch; } }
+.home-grid > * { min-width: 0; }
+.today-actions .btn { padding: 0 var(--s-3); }
+.table-wrap { position: relative; }
+.slot-grid .chip { padding: 0 var(--s-2); }

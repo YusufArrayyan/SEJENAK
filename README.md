@@ -14,6 +14,14 @@ SEJENAK membantu mahasiswa mengenali pola penggunaan media sosial, memberi jeda 
 
 **Dok Sejenak** (IoT) mencatat waktu ponsel diletakkan, membuka Rehat saat ponsel diangkat, menyalakan lampu napas, dan punya tombol bantuan fisik. Detail di [iot/README.md](iot/README.md).
 
+## Materi
+
+- Video alur kerja dan integrasi IoT (6:55, bersuara, bersubtitle): [media/SEJENAK-alur-kerja-dan-IoT.mp4](media/SEJENAK-alur-kerja-dan-IoT.mp4)
+- Panduan penggunaan visual (PDF): [docs/Panduan-Penggunaan-SEJENAK.pdf](docs/Panduan-Penggunaan-SEJENAK.pdf)
+- Mockup untuk esai: [docs/mockup/](docs/mockup/)
+
+![Mockup SEJENAK](docs/mockup/mockup-hero.png)
+
 ## Struktur
 
 ```

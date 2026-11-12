@@ -1,0 +1,84 @@
+[
+  { "id": "judul", "s": [
+    "Ini SEJENAK, aplikasi web progresif yang membantu mahasiswa memeriksa kebiasaan media sosial mereka.",
+    "Dalam video ini, kita lihat alur kerja sistemnya dan bagaimana aplikasi terhubung dengan Dok Sejenak, perangkat IoT pendampingnya."
+  ]},
+  { "id": "masalah", "s": [
+    "Penetrasi internet di Indonesia sudah mencapai 79,5 persen.",
+    "Sekitar 18,4 persen mahasiswa diperkirakan mengalami kecanduan media sosial, sementara hanya 2,6 persen remaja dengan masalah kesehatan mental yang mengakses layanan.",
+    "Alat waktu layar biasa hanya memantau. SEJENAK dirancang untuk mendampingi."
+  ]},
+  { "id": "arsitektur", "s": [
+    "Sistem SEJENAK punya tiga lapisan.",
+    "Di depan, satu aplikasi web dipakai empat peran: mahasiswa, Teman Sejenak, konselor BK, dan admin kampus.",
+    "Di tengah, ada server kampus dengan login SSO dan basis data terenkripsi.",
+    "Di sisi perangkat, Dok Sejenak berbasis ESP32 mengirim peristiwa lewat broker MQTT yang terenkripsi TLS."
+  ]},
+  { "id": "masuk", "s": [
+    "Alur dimulai saat mahasiswa masuk dengan akun kampus.",
+    "Sebelum apa pun disimpan, mahasiswa memilih apa yang dibagikan lewat tiga sakelar persetujuan.",
+    "Semuanya mati sejak awal dan bisa dicabut kapan saja."
+  ]},
+  { "id": "cekpola", "s": [
+    "Langkah pertama adalah Cek Pola.",
+    "Enam pertanyaan berbasis skala BSMAS ditampilkan satu per layar.",
+    "Hasilnya disampaikan dalam bahasa sehari-hari, dan selalu disertai pengingat bahwa ini bukan diagnosis."
+  ]},
+  { "id": "beranda", "s": [
+    "Di beranda, mahasiswa melihat pola hari ini: menit per aplikasi dibandingkan batas pribadinya.",
+    "Aplikasi web tidak bisa membaca durasi aplikasi lain, jadi mahasiswa menyalin angka dari Waktu Layar ponsel.",
+    "Pencatatan ini selesai kurang dari tiga puluh detik dan tetap berjalan saat luring."
+  ]},
+  { "id": "rehat", "s": [
+    "Saat catatan melewati batas, layar Rehat terbuka.",
+    "Lingkaran napas memandu tarik napas empat detik, lalu hembuskan empat detik.",
+    "Setelah sepuluh detik, muncul pertanyaan: untuk apa kamu membuka ini?",
+    "Tombol tutup dan lanjut dibuat sama besar, jadi keputusan tetap di tangan mahasiswa."
+  ]},
+  { "id": "dok", "s": [
+    "Di sinilah Dok Sejenak berperan.",
+    "Dok ini adalah alas ponsel dengan mikrokontroler ESP32, sensor inframerah untuk mendeteksi ponsel, cincin LED, dan satu tombol bantuan.",
+    "Dok tidak punya kamera, mikrofon, atau GPS. Yang ia tahu hanya kapan ponsel diletakkan dan diangkat."
+  ]},
+  { "id": "iot1", "s": [
+    "Begini integrasinya.",
+    "Saat ponsel diletakkan, ESP32 mengirim peristiwa docked ke topik MQTT milik dok tersebut.",
+    "Aplikasi menerimanya lewat WebSocket aman, lalu mulai menghitung waktu bebas layar."
+  ]},
+  { "id": "iot2", "s": [
+    "Saat ponsel diangkat, dok mengirim peristiwa lifted.",
+    "Aplikasi menambahkan menitnya ke catatan harian, membuka layar Rehat, lalu mengirim perintah breath kembali ke dok.",
+    "Cincin LED pun ikut bernapas bersama mahasiswa."
+  ]},
+  { "id": "bantuan", "s": [
+    "Jalur krisis tidak bergantung pada satu tombol.",
+    "Tombol Bantuan tampil di setiap layar, dan tombol fisik di dok, bila ditahan satu detik, membuka kartu bantuan di ponsel.",
+    "Di obrolan, kata-kata yang menandakan bahaya membuat pesan ditahan, lalu kartu Healing119 dan BK kampus langsung muncul.",
+    "Pesan itu tidak diteruskan ke konselor sebaya."
+  ]},
+  { "id": "teman", "s": [
+    "Langkah ketiga adalah Teman Sejenak.",
+    "Mahasiswa memilih teman dan waktu, lalu mengobrol lewat teks atau suara, paling lama tiga puluh menit.",
+    "Teman Sejenak adalah mahasiswa terlatih di bawah supervisi dosen BK. Ringkasan sesi hanya tersimpan bila mahasiswa menyetujuinya."
+  ]},
+  { "id": "rujuk", "s": [
+    "Langkah keempat adalah Rujuk dan Tinjau.",
+    "Mahasiswa membaca pratinjau rujukan, persis seperti yang akan dibaca konselor, dan boleh mengubahnya sebelum mengirim.",
+    "Setiap empat pekan, tinjauan menampilkan grafik skor, jumlah rehat yang ditutup, dan menit bebas layar dari dok."
+  ]},
+  { "id": "panel", "s": [
+    "Di sisi kampus, Teman Sejenak mengelola antrean dan bisa eskalasi ke penyelia.",
+    "Konselor BK menerima rujukan yang sudah disetujui mahasiswa.",
+    "Admin melihat dasbor agregat tanpa identitas. Kelompok dengan kurang dari sepuluh orang disembunyikan."
+  ]},
+  { "id": "privasi", "s": [
+    "Privasi menjadi syarat sejak awal.",
+    "Dok hanya mengirim jenis peristiwa dan waktunya. Setiap dok punya akun MQTT sendiri yang dibatasi ke topiknya.",
+    "Broker tidak menyimpan pesan, dan server hanya menyimpan total menit per hari, sesuai Undang-Undang Pelindungan Data Pribadi."
+  ]},
+  { "id": "penutup", "s": [
+    "Mengenali pola, rehat sejenak, bicara dengan teman, lalu dirujuk bila perlu.",
+    "Aplikasi dan Dok Sejenak bekerja bersama, supaya mahasiswa bisa berhenti sebentar dan memilih langkahnya sendiri.",
+    "Terima kasih."
+  ]}
+]
