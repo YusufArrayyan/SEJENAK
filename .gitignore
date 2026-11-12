@@ -1,0 +1,9 @@
+node_modules/
+dist/
+dev-dist/
+.claude/
+*.local
+.DS_Store
+iot/firmware/**/config.h
+tools/node_modules/
+media/build/

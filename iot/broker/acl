@@ -1,0 +1,10 @@
+# Setiap dok hanya boleh menulis peristiwanya sendiri dan membaca perintahnya sendiri.
+# %u = username MQTT = DEVICE_ID (contoh: DOK-7F3A)
+pattern write sejenak/dok/%u/event
+pattern read  sejenak/dok/%u/cmd
+
+# Akun aplikasi mahasiswa (token per pengguna, dipetakan backend ke perangkat miliknya)
+# Contoh entri dibuat otomatis oleh backend saat dok dipasangkan:
+# user app-raka
+# topic read  sejenak/dok/DOK-7F3A/event
+# topic write sejenak/dok/DOK-7F3A/cmd
