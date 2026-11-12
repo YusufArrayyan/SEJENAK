@@ -46,6 +46,16 @@ Buka `http://localhost:5173`, lalu pilih **Mode demo uji coba** untuk masuk seba
 
 Build produksi: `npm run build` (hasil di `app/dist`, sudah termasuk service worker untuk PWA luring).
 
+## Deploy ke Render
+
+Repositori ini sudah berisi Blueprint [`render.yaml`](render.yaml) (situs statis, gratis).
+
+1. Masuk ke [dashboard.render.com](https://dashboard.render.com), pilih **New > Blueprint**.
+2. Hubungkan akun GitHub, pilih repo `YusufArrayyan/SEJENAK`, cabang `main`.
+3. Render membaca `render.yaml`, tekan **Apply**. Hasilnya tersedia di `https://sejenak.onrender.com` (atau nama lain bila sudah dipakai).
+
+Blueprint menjalankan `npm ci && npm run build` di folder `app/`, menyajikan `app/dist`, mengarahkan semua rute ke `index.html`, dan memasang header keamanan (CSP, tanpa kamera/mikrofon/lokasi). Deploy ulang otomatis berjalan setiap ada perubahan di `app/`.
+
 ## Desain
 
 - Identitas dari logo: kuning `#FDBC22` dan arang `#2A2A2C`; warna modul dari PRD (teal Cek Pola, koral Rehat, violet Teman Sejenak, slate Rujuk) dipakai sebagai bidang, dengan varian tinta yang lolos kontras 4,5:1.
